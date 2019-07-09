@@ -12,10 +12,10 @@ export default Route.extend({
 	return _model;
     },
     actions:{
-	reloadModel: function(){
+	invalidateModel(){
 	    this.refresh(); 
 	},
-	error: function(errors, transition){   
+	error: function(errors){   
 	    let notification = this.controllerFor('index').get('notifications');
 	    let error = errors.errors[0];
 	    let _message="";
@@ -34,7 +34,7 @@ export default Route.extend({
 		_message = "Something went wrong. Try again...";
             }
 	    
-	    notification.error('Account not found. Try again.',{
+	    notification.error(_message,{
 		autoClear: true
 	    });
 	    

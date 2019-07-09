@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    Filter:
+    <button {{action "Filter" 'repo'}}>All</button>
+    {{#each usuarios.languages as |lng|}}
+      {{#if lng}}
+        <button {{action "Filter" lng}}>{{lng}}</button>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
+  
+<div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="list-group" role="tablist">
+        {{#each user.repos as |repo|}}
+          <a data-toggle="collapse" href="#branch_{{repo.id}}"  class="repo  {{repo.language}} list-group-item list-group-item-action flex-column align-items-start" role="button" aria-expanded="false" aria-controls="branch_{{repo.id}}">
+            <div class="d-flex w-100 justify-content-between">
+               <h5 class="mb-1">{{repo.name}}<small>    {{repo.private}}</small></h5>
+               <small> <span class="badge badge-primary badge-pill">{{repo.branches.length}}</span>           branches</small>
+            </div>
+            <p class="small mb-1"><a href={{repo.htmlUrl}}>{{repo.htmlUrl}}</a></p>
+            <small>    {{repo.language}}</small>
+          </a>
+          <div class="collapse" id="branch_{{repo.id}}">
+            <div class="card card-body">
+              {{#each repo.branches as |branch|}}
+                <small>{{branch.name}}</small>      
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+           <br>
+           <div class="card card-body">
+	     <p>Sorry, we didn't find repositories</p>
+	   </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{yield}}

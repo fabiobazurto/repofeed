@@ -1,0 +1,12 @@
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+    <h1>GitHub repositories search</h1>
+        <div class="form-group">
+          <label for="account">Enter Github account:</label>
+          {{input value=account id="account" name="account" class="form-control"}}
+        </div>  
+        <button type="submit" class="btn btn-success" {{action "refreshModel"}}>Get repositories</button>
+
+    </div>
+  </div>
+  {{yield}}

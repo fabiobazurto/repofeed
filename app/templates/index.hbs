@@ -1,6 +1,6 @@
 {{notification-container position="top-right"}}
 <div class="container">
- {{search-repo model=model invalidateModel="invalidateModel"}}
-
+ {{search-repo model=model invalidateModel=(action send 'invalidateModel')}}
+ {{repo-details user=model}}
 </div>
 {{yield}}

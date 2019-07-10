@@ -1,18 +1,22 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+    username: '',
     model: function(params){
 	let _model;
-
-	if (params.account){
-	     _model = this.store.findRecord('user',params.account);
-	}
+	console.log(this.get("username"));
+	if(!this.get("username"))
+	    _model=null;
 	else
-	    _model = null;
+	    _model=this.store.findRecord('user',this.get("username"));
 	return _model;
+	
     },
     actions:{
-	invalidateModel(){
+	invalidateModel(userSearch){
+	    console.log('invalidateModel');
+	    console.log(userSearch);
+	    this.set("username",userSearch);
 	    this.refresh(); 
 	},
 	error: function(errors){   
@@ -28,7 +32,7 @@ export default Route.extend({
             } else if (error.status == 401) {
 		_message = "Unauthorized";
             } else if (error.status == 404) {
-                _message = "Account not found";
+                _message = "GitHub Account not found";
 		this.controllerFor('index').set('model',null);
             } else {
 		_message = "Something went wrong. Try again...";

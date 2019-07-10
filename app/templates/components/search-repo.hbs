@@ -2,6 +2,7 @@
     <div class="col-xs-12 col-lg-12">
     <h1>GitHub repositories search</h1>
         <div class="form-group">
+          {{input value=apikey id="apikey" name="apikey" class="form-control"}}	
           <label for="account">Enter Github account:</label>
           {{input value=account id="account" name="account" class="form-control"}}
         </div>  
@@ -9,4 +10,7 @@
 
     </div>
   </div>
-  {{yield}}
+{{#each computedModel as |m|}}1<br>{{/each}}
+
+
+

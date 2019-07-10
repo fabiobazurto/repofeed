@@ -6,5 +6,6 @@ export default Model.extend({
     htmlUrl:  DS.attr('string'),
     language: DS.attr('string'),
     private: DS.attr('string'),
-    branches: DS.hasMany('branch')    
+    branches: DS.hasMany('branch')
+    ,    visible: 'visible'
 });

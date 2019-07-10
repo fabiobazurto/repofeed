@@ -2,3 +2,7 @@
     color: #fff;
     background-color: #0b79e6
 }
+.hidden {
+    display: none;
+}
+

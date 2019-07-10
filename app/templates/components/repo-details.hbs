@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-lg-12">
     Filter:
-    <button {{action "Filter" 'repo'}}>All</button>
+    <button {{action "filter" 'ALL'}}>All</button>
     {{#each user.languages as |lng|}}
       {{#if lng}}
-        <button {{action "Filter" lng}}>{{lng}}</button>
+        <button {{action "filter" lng}}>{{lng}}</button>
       {{/if}}
     {{/each}}
   </div>
@@ -14,7 +14,7 @@
     <div class="col-xs-12 col-lg-12">
       <div class="list-group" role="tablist">
         {{#each user.repos as |repo|}}
-          <a data-toggle="collapse" href="#branch_{{repo.id}}"  class="repo  {{repo.language}} list-group-item list-group-item-action flex-column align-items-start" role="button" aria-expanded="false" aria-controls="branch_{{repo.id}}">
+          <a data-toggle="collapse" href="#branch_{{repo.id}}"  class="repo  {{is-visible currentLng=repo.language currentFilter=filterKey}} list-group-item list-group-item-action flex-column align-items-start" role="button" aria-expanded="false" aria-controls="branch_{{repo.id}}">
             <div class="d-flex w-100 justify-content-between">
                <h5 class="mb-1">{{repo.name}}<small>    {{repo.private}}</small></h5>
                <small> <span class="badge badge-primary badge-pill">{{repo.branches.length}}</span>           branches</small>
